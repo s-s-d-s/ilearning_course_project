@@ -1,0 +1,7 @@
+{
+  "port": 5000,
+  "host": "freedb.tech",
+  "user" : "freedbtech_ssds",
+  "password": "ssds",
+  "database": "freedbtech_ILearning"
+}

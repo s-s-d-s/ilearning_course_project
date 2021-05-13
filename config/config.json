@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "freedbtech_ssds",
+    "password": "ssds",
+    "database": "freedbtech_ILearning",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "freedbtech_ssds",
+    "password": "ssds",
+    "database": "freedbtech_ILearning",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "freedbtech_ssds",
+    "password": "ssds",
+    "database": "freedbtech_ILearning",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  }
+}
