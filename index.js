@@ -6,6 +6,7 @@ const app = express()
 app.use(express.json({extended: true}))
 app.use('/', require('./routes/router'))
 app.use('/', require('./routes/signUp'))
+app.use('/', require('./routes/signIn'))
 
 const PORT = process.env.PORT || config.get('port') || 5000
 

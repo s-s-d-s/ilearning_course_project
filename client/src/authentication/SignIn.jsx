@@ -1,12 +1,27 @@
-import React from "react"
-import {Button, Form} from "react-bootstrap"
+import React, {useState} from "react"
+import {Alert, Button, Form} from "react-bootstrap"
 import {useForm} from "react-hook-form"
 import {ErrorMessage} from "@hookform/error-message"
+import {sendRequest} from "../hooks/http.hook"
+import {useAuth} from "../hooks/auth.hook"
+import { useHistory } from "react-router-dom"
 import './index.css'
 
+
 export const SignIn = () => {
+    const history = useHistory()
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const onSubmit = data => alert(JSON.stringify(data))
+    const {signIn} = useAuth()
+    const [message, setMessage] = useState(null)
+
+    const onSubmit = data => sendRequest('/signin', 'POST', data)
+        .then(res => {
+            if (res.status >= 400) res.json().then(ctx => setMessage(ctx.message))
+            else {
+                res.json().then(ctx => signIn(ctx.token, ctx.userId))
+                history.push('/')
+            }
+        })
 
     return (
         <div className="row mt-2 justify-content-center">
@@ -48,8 +63,13 @@ export const SignIn = () => {
                     <Button className="alert-success" type="submit">
                         Sign In
                     </Button>
+
+                    <div className="mt-2">Don't have account? <a href="/signup">Create an account here</a>.</div>
+
+                    <Alert className="info">
+                        <Alert.Heading>{message}</Alert.Heading>
+                    </Alert>
                 </Form>
-                <div className="mt-2">Don't have account? <a href="/signup">Create an account here</a>.</div>
             </div>
         </div>
     )

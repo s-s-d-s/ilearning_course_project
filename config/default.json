@@ -3,5 +3,6 @@
   "host": "freedb.tech",
   "user" : "freedbtech_ssds",
   "password": "ssds",
-  "database": "freedbtech_ILearning"
+  "database": "freedbtech_ILearning",
+  "jwtSecret": "Jfsdk45klfsdf4lfsdfsd4jsdfKdfsdfpd"
 }

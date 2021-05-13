@@ -73,14 +73,6 @@ export const SignUp = () => {
                         Sign Up
                     </Button>
 
-                    <Button className="alert-primary mr-2">
-                        Google
-                    </Button>
-
-                    <Button className="alert-primary">
-                        Facebook
-                    </Button>
-
                     <Alert className="info">
                         <Alert.Heading>{message}</Alert.Heading>
                     </Alert>
