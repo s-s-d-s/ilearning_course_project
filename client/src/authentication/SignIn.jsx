@@ -4,14 +4,14 @@ import {useForm} from "react-hook-form"
 import {ErrorMessage} from "@hookform/error-message"
 import {sendRequest} from "../hooks/http.hook"
 import {useAuth} from "../hooks/auth.hook"
-import { useHistory } from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import './index.css'
 
 
 export const SignIn = () => {
     const history = useHistory()
-    const {register, handleSubmit, formState: {errors}} = useForm()
     const {signIn} = useAuth()
+    const {register, handleSubmit, formState: {errors}} = useForm()
     const [message, setMessage] = useState(null)
 
     const onSubmit = data => sendRequest('/signin', 'POST', data)

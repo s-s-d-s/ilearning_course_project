@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Button, Form, FormControl, Nav, Navbar} from "react-bootstrap"
+import {useHistory} from "react-router-dom"
+import {AuthContext} from "../hooks/context.hook"
 
 export const NavPanel = () => {
+    const history = useHistory()
+    const ctx = useContext(AuthContext)
+
+    const signOutHandler = () => {
+        ctx.signOut()
+        history.push('/')
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">Home</Navbar.Brand>
@@ -16,8 +26,17 @@ export const NavPanel = () => {
                 </Form>
             </Nav>
 
-            <Button variant="outline-info mr-sm-2" href="/signin">Sign In</Button>
-            <Button variant="outline-info" href="/signup">Sign Up</Button>
+            {!ctx.token
+                ? ( <>
+                    <Button variant="outline-info mr-sm-2" onClick={() => history.push('/signin')}>Sign In</Button>
+                    <Button variant="outline-info" onClick={() => history.push('/signup')}>Sign Up</Button>
+                </>)
+                : (<>
+                    <Button variant="outline-info mr-sm-2" onClick={() => history.push('/profile')}>Profile</Button>
+                    <Button variant="outline-info" onClick={signOutHandler}>Sign Out</Button>
+                </>)}
+
+
         </Navbar>
     )
 }
