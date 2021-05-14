@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 'user'
         }
     })
+    User.associate = function (models) {
+        User.hasMany(models.Company, {
+            onDelete: 'CASCADE'
+        })
+    }
 
     return User
 }

@@ -16,9 +16,9 @@ export const NavPanel = () => {
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">Home</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="#">Company</Nav.Link>
-                <Nav.Link href="##">Create</Nav.Link>
-                <Nav.Link href="####">About</Nav.Link>
+
+                {ctx.token && <Nav.Link href="/vievcompanies">Companies</Nav.Link>}
+                {ctx.token && <Nav.Link href="/createcompany">Create Company</Nav.Link>}
 
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2"/>

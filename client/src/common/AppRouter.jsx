@@ -6,7 +6,9 @@ import {SignUp} from "../authentication/SignUp"
 import {Home} from "../home/Home"
 import {AuthContext} from "../hooks/context.hook"
 import {useAuth} from "../hooks/auth.hook"
-import {UserProfile} from "../user_profile/UserProfile";
+import {UserProfile} from "../user_profile/UserProfile"
+import {CreateCompany} from "../companies/CreateCompany"
+import {ViewCompanies} from "../companies/ViewCompanies"
 
 
 export const AppRouter = () => {
@@ -18,6 +20,12 @@ export const AppRouter = () => {
             <BrowserRouter>
                 <NavPanel/>
                 <Switch>
+                    <Route path="/vievcompanies">
+                        <ViewCompanies/>
+                    </Route>
+                    <Route path="/createcompany">
+                        <CreateCompany/>
+                    </Route>
                     <Route path="/profile">
                         <UserProfile/>
                     </Route>
