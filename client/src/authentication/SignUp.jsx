@@ -10,8 +10,7 @@ export const SignUp = () => {
     const {register, handleSubmit, formState: {errors}} = useForm()
 
     const onSubmit = data => sendRequest('/signup', 'POST', data)
-        .then(res => res.json())
-        .then(ctx => setMessage(ctx.message))
+        .then(res => res.json().then(ctx => setMessage(ctx.message)))
 
     return (
 

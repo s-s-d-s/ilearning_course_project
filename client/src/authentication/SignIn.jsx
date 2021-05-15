@@ -20,6 +20,7 @@ export const SignIn = () => {
             else {
                 res.json().then(ctx => signIn(ctx.token, ctx.userId))
                 history.push('/')
+                history.go(0)
             }
         })
 

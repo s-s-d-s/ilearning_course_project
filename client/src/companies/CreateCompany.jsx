@@ -1,13 +1,18 @@
-import React, {useContext} from "react"
+import React, {useContext, useState} from "react"
 import {AuthContext} from "../hooks/context.hook"
-import {Alert, Button, Form} from "react-bootstrap";
-import {ErrorMessage} from "@hookform/error-message";
-import {useForm} from "react-hook-form";
+import {Alert, Button, Form} from "react-bootstrap"
+import {ErrorMessage} from "@hookform/error-message"
+import {useForm} from "react-hook-form"
+import {sendRequest} from "../hooks/http.hook"
 
 export const CreateCompany = () => {
     const ctx = useContext(AuthContext)
+    const [message, setMessage] = useState(null)
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const onSubmit = data => alert(JSON.stringify(data))
+    const onSubmit = data => {
+        data.userId = ctx.userId
+        sendRequest('/createcompany', 'POST', data).then(res => res.json().then(ctx => setMessage(ctx.message)))
+    }
 
     return(
         <div className="row mt-2 justify-content-center">
@@ -30,11 +35,11 @@ export const CreateCompany = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>Bonus List</Form.Label>
+                        <Form.Label>Bonuses</Form.Label>
                         <Form.Control
-                            name="bonus"
-                            placeholder="Enter bonus list"
-                            {...register("bonus", {required: false})}/>
+                            name="bonusList"
+                            placeholder="Enter bonuses"
+                            {...register("bonusList", {required: false})}/>
                     </Form.Group>
 
                     <Form.Group>
@@ -61,13 +66,21 @@ export const CreateCompany = () => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>Amount Of Money</Form.Label>
+                        <Form.Label>Amount Of Money $</Form.Label>
                         <Form.Control
                             name="amountOfMoney"
                             placeholder="Enter amount of money"
                             {...register("amountOfMoney", {
-                                required: "Amount of money is required"
+                                required: "Amount of money is required",
+                                pattern: {
+                                    value: /^[0-9]/i,
+                                    message: 'Must be a number'
+                                }
                             })}/>
+                        <ErrorMessage
+                            errors={errors}
+                            name="amountOfMoney"
+                            render={({message}) => <span className="err">{message}</span>}/>
                     </Form.Group>
 
                     <Button className="alert-success" type="submit">
@@ -75,7 +88,7 @@ export const CreateCompany = () => {
                     </Button>
 
                     <Alert className="info">
-                        <Alert.Heading></Alert.Heading>
+                        <Alert.Heading>{message}</Alert.Heading>
                     </Alert>
                 </Form>
             </div>

@@ -2,7 +2,8 @@ module.exports = (sequelize, DataTypes) => {
     const Company = sequelize.define('Company', {
         companyName: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            unique: true
         },
         bonusList: {
             type: DataTypes.STRING,
@@ -19,9 +20,6 @@ module.exports = (sequelize, DataTypes) => {
         amountOfMoney: {
             type: DataTypes.INTEGER,
             allowNull: true
-        },
-        owner: {
-            type: DataTypes.INTEGER
         }
     })
 
