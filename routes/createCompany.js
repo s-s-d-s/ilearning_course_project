@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Company = require('../models').Company
-const User = require('../models').User
 
 router.post('/createcompany', async (req, res) => {
     const {name, bonusList, description, subject, amountOfMoney, userId} = req.body

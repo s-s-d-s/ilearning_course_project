@@ -1,11 +1,14 @@
-export const sendRequest = (url, method, body = null) => {
-    const headers = {
-        'Content-Type': 'application/json'
+export const sendRequest = async (url, method, body = null, headers = {}) => {
+    if (body) {
+        body = JSON.stringify(body)
+        headers = {
+            'Content-Type': 'application/json'
+        }
     }
 
-    return fetch(url, {
+    return await fetch(url, {
         method: method,
-        body: JSON.stringify(body),
+        body: body,
         headers: headers
     })
 }

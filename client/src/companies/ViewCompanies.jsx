@@ -1,8 +1,6 @@
-import React, {useContext} from "react"
-import {AuthContext} from "../hooks/context.hook"
+import React from "react"
 
 export const ViewCompanies = () => {
-    const ctx = useContext(AuthContext)
 
     return(
         <div>
