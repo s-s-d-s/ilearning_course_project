@@ -61,6 +61,8 @@ export const CreateCompany = () => {
                             <option>Sport</option>
                             <option>TV</option>
                             <option>Games</option>
+                            <option>Shop</option>
+                            <option>Music</option>
                             <option>Development</option>
                             <option>Other</option>
                         </Form.Control>

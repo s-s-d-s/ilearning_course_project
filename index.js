@@ -11,6 +11,7 @@ app.use('/', require('./routes/createCompany'))
 app.use('/', require('./routes/viewCompanies'))
 app.use('/', require('./routes/userProfile'))
 app.use('/', require('./routes/deleteAccount'))
+app.use('/', require('./routes/editProfile'))
 app.use('/', require('./routes/companyPage'))
 
 const PORT = process.env.PORT || config.get('port') || 5000
