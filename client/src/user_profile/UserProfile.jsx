@@ -2,11 +2,13 @@ import React, {useContext, useEffect, useState} from "react"
 import {AuthContext} from "../hooks/context.hook"
 import {Button, Card} from "react-bootstrap"
 import {sendRequest} from "../hooks/http.hook"
+import {useHistory} from "react-router-dom"
 import {Link} from "react-router-dom"
 import moment from "moment"
 
 
 export const UserProfile = () => {
+    const history = useHistory()
     const ctx = useContext(AuthContext)
     const [username, setUsername] = useState(null)
     const [email, setEmail] = useState(null)
@@ -20,7 +22,6 @@ export const UserProfile = () => {
                 setCreatedAt(moment(data.createdAt).format('DD.MM.YYYY HH:mm'))
             }))
     }, [ctx])
-
 
     return (
         <div className="row mt-2 justify-content-center">
@@ -46,9 +47,16 @@ export const UserProfile = () => {
                                 <Card.Title>Username: {username}</Card.Title>
                                 <Card.Text>Email: {email}</Card.Text>
                             </Card.Body>
+
                             <Card.Footer className="text-muted">Created AT: {createdAt}</Card.Footer>
-                            <Button className="primary">Edit Profile</Button>
-                            <Button className="primary mt-2">Delete Account</Button>
+
+                            <Button className="primary" onClick={() => history.push('/editprofile')}>
+                                Edit Profile
+                            </Button>
+
+                            <Button className="primary mt-2" onClick={() => history.push('/deleteaccount')}>
+                                Delete Account
+                            </Button>
                         </Card>
                     </>
                 }

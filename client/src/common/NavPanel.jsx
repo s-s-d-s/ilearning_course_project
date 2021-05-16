@@ -32,7 +32,7 @@ export const NavPanel = () => {
                     <Button variant="outline-info" onClick={() => history.push('/signup')}>Sign Up</Button>
                 </>)
                 : (<>
-                    <Button variant="outline-info mr-sm-2" onClick={() => history.push('/profile/')}>Profile</Button>
+                    <Button variant="outline-info mr-sm-2" onClick={() => history.push('/profile')}>Profile</Button>
                     <Button variant="outline-info" onClick={signOutHandler}>Sign Out</Button>
                 </>)}
 

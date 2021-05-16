@@ -9,6 +9,7 @@ app.use('/', require('./routes/signUp'))
 app.use('/', require('./routes/signIn'))
 app.use('/', require('./routes/createCompany'))
 app.use('/', require('./routes/userProfile'))
+app.use('/', require('./routes/deleteAccount'))
 
 const PORT = process.env.PORT || config.get('port') || 5000
 

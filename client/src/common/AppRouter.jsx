@@ -9,6 +9,8 @@ import {useAuth} from "../hooks/auth.hook"
 import {UserProfile} from "../user_profile/UserProfile"
 import {CreateCompany} from "../companies/CreateCompany"
 import {ViewCompanies} from "../companies/ViewCompanies"
+import {EditProfile} from "../user_profile/EditProfile"
+import {DeleteAccount} from "../user_profile/DeleteAccount"
 
 
 export const AppRouter = () => {
@@ -25,6 +27,12 @@ export const AppRouter = () => {
                     </Route>
                     <Route path="/createcompany">
                         <CreateCompany/>
+                    </Route>
+                    <Route path="/editprofile">
+                        <EditProfile/>
+                    </Route>
+                    <Route path="/deleteaccount">
+                        <DeleteAccount/>
                     </Route>
                     <Route path="/profile">
                         <UserProfile/>
