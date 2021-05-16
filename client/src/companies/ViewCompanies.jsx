@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {Card} from "react-bootstrap"
+import {Button, Card} from "react-bootstrap"
 import {sendRequest} from "../hooks/http.hook"
 import {Link} from "react-router-dom"
 import moment from "moment"
@@ -12,7 +12,7 @@ export const ViewCompanies = () => {
     }])
 
     useEffect(() => {
-        sendRequest('/vievcompanies', 'GET')
+        sendRequest('/viewcompanies', 'GET')
             .then(res => res.json().then(data => setCompanies(data.companies)))
     }, [])
 
@@ -35,7 +35,9 @@ export const ViewCompanies = () => {
                         <Card.Text>
                             CreatedAt: {moment(item.createdAt).format('DD.MM.YYYY HH:mm')}
                         </Card.Text>
-                        <Link to={`/company?id=${item.id}`}>View more</Link>
+                        <Link to={`/company?id=${item.id}`}>
+                            <Button>View More</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             )}

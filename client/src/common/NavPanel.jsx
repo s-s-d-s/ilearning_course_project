@@ -17,7 +17,7 @@ export const NavPanel = () => {
             <Navbar.Brand href="/">Home</Navbar.Brand>
             <Nav className="mr-auto">
 
-                {ctx.token && <Nav.Link href="/vievcompanies">Companies</Nav.Link>}
+                {ctx.token && <Nav.Link href="/viewcompanies">Companies</Nav.Link>}
                 {ctx.token && <Nav.Link href="/createcompany">Create Company</Nav.Link>}
 
                 <Form inline>
