@@ -1,19 +1,44 @@
-import React from "react"
-import {Button, Card} from "react-bootstrap"
+import React, {useEffect, useState} from "react"
+import {Card} from "react-bootstrap"
+import {sendRequest} from "../hooks/http.hook"
+import {Link} from "react-router-dom"
+import moment from "moment"
 
 export const ViewCompanies = () => {
+    const [companies, setCompanies] = useState([{
+        companyName: null,
+        description: null,
+        createdAt: null
+    }])
 
-    return(
-        <div className="container row">
-            <Card style={{ width: '20rem' }}>
-                <Card.Body>
-                    <Card.Title>Company name</Card.Title>
-                    <Card.Text>
-                        Description
-                    </Card.Text>
-                    <Button className="primary">View more</Button>
-                </Card.Body>
-            </Card>
+    useEffect(() => {
+        sendRequest('/vievcompanies', 'GET')
+            .then(res => res.json().then(data => setCompanies(data.companies)))
+    }, [])
+
+    return (
+        <div className="row mt-2 ml-1">
+            {companies.map((item, key) =>
+                <Card
+                    key={key}
+                    className="ml-1 mt-1"
+                    border="primary"
+                    style={{width: '23rem'}}>
+                    <Card.Body>
+
+                        <Card.Title>{item.companyName}</Card.Title>
+
+                        <Card.Text>
+                            Description: {item.description}
+                        </Card.Text>
+
+                        <Card.Text>
+                            CreatedAt: {moment(item.createdAt).format('DD.MM.YYYY HH:mm')}
+                        </Card.Text>
+                        <Link to={`/company?id=${item.id}`}>View more</Link>
+                    </Card.Body>
+                </Card>
+            )}
         </div>
     )
 }

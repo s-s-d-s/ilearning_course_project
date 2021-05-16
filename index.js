@@ -8,6 +8,7 @@ app.use('/', require('./routes/router'))
 app.use('/', require('./routes/signUp'))
 app.use('/', require('./routes/signIn'))
 app.use('/', require('./routes/createCompany'))
+app.use('/', require('./routes/viewCompanies'))
 app.use('/', require('./routes/userProfile'))
 app.use('/', require('./routes/deleteAccount'))
 
