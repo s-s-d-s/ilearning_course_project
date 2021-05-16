@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import queryString from 'query-string'
 import {sendRequest} from "../hooks/http.hook"
-import {Link} from "react-router-dom"
-import {Button, Card} from "react-bootstrap"
+import {Card} from "react-bootstrap"
 import moment from "moment"
 
 
@@ -21,7 +20,7 @@ export const CompanyPage = () => {
     useEffect(() => {
         sendRequest('/company', 'POST', {companyId: companyId.id})
             .then(res => res.json().then(data => setCompany(data.company)))
-    }, [])
+    })
 
     return (
         <div className="row mt-2 justify-content-center">
