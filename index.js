@@ -6,7 +6,6 @@ const path = require('path')
 const app = express()
 
 app.use(express.json({extended: true}))
-app.use('/', require('./routes/router'))
 app.use('/', require('./routes/signUp'))
 app.use('/', require('./routes/signIn'))
 app.use('/', require('./routes/createCompany'))
