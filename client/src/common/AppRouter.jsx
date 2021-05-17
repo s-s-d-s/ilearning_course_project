@@ -26,11 +26,11 @@ export const AppRouter = () => {
                     <Route path="/createcompany">
                         <CreateCompany/>
                     </Route>
-                    <Route path="/viewcompanies">
-                        <ViewCompanies/>
-                    </Route>
                     <Route path="/company">
                         <CompanyPage/>
+                    </Route>
+                    <Route path="/viewcompanies">
+                        <ViewCompanies/>
                     </Route>
                     <Route path="/editprofile">
                         <EditProfile/>
