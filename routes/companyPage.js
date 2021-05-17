@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Company = require('../models').Company
+const User = require('../models').User
 
 router.post('/company', async (req, res) => {
     const {companyId} = req.body
@@ -10,6 +11,13 @@ router.post('/company', async (req, res) => {
         }
     })
 
+    const owner = await User.findOne({
+        where: {
+            id: company.UserId
+        }
+    })
+
+    company.UserId = owner.username
     res.json({company: company})
 })
 

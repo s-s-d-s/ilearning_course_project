@@ -14,13 +14,14 @@ export const CompanyPage = () => {
         subject: null,
         amountOfMoney: null,
         createdAt: null,
-        updatedAt: null
+        updatedAt: null,
+        UserId: null
     })
 
     useEffect(() => {
         sendRequest('/company', 'POST', {companyId: companyId.id})
             .then(res => res.json().then(data => setCompany(data.company)))
-    })
+    }, [])
 
     return (
         <div className="row mt-2 justify-content-center">
@@ -54,6 +55,10 @@ export const CompanyPage = () => {
 
                     <Card.Footer className="text-muted">
                         Last Update: {moment(company.updatedAt).format('DD.MM.YYYY HH:mm')}
+                    </Card.Footer>
+
+                    <Card.Footer className="text-muted">
+                        Company Owner: {company.UserId}
                     </Card.Footer>
                 </Card>
             </div>
