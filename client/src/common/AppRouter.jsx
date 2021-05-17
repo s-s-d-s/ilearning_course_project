@@ -12,6 +12,7 @@ import {ViewCompanies} from "../companies/ViewCompanies"
 import {EditProfile} from "../user_profile/EditProfile"
 import {DeleteAccount} from "../user_profile/DeleteAccount"
 import {CompanyPage} from "../companies/CompanyPage"
+import {Search} from "./Search"
 
 
 export const AppRouter = () => {
@@ -23,6 +24,9 @@ export const AppRouter = () => {
             <BrowserRouter>
                 <NavPanel/>
                 <Switch>
+                    <Route path="/search">
+                        <Search/>
+                    </Route>
                     <Route path="/createcompany">
                         <CreateCompany/>
                     </Route>
