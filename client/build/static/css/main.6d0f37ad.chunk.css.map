@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/authentication/index.css"],"names":[],"mappings":"AAAA,KACI,aACJ,CAEA,YACI,cAAe,CACf,YACJ","file":"main.6d0f37ad.chunk.css","sourcesContent":[".err {\r\n    color: #bf1650;\r\n}\r\n\r\n.err::before {\r\n    display: inline;\r\n    content: \"⚠ \";\r\n}"]}
