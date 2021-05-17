@@ -23,11 +23,11 @@ export const AppRouter = () => {
             <BrowserRouter>
                 <NavPanel/>
                 <Switch>
-                    <Route path="/viewcompanies">
-                        <ViewCompanies/>
-                    </Route>
                     <Route path="/createcompany">
                         <CreateCompany/>
+                    </Route>
+                    <Route path="/viewcompanies">
+                        <ViewCompanies/>
                     </Route>
                     <Route path="/company">
                         <CompanyPage/>
